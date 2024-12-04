@@ -1,7 +1,7 @@
 const themeConfig = {
   token: {
     fontSize: 14,
-    colorPrimary: "#19CE67",
+    colorPrimary: "#49bbe8",
     colorText: "rgba(96, 96, 96, 1)",
     colorTextSecondary: "rgba(51, 51, 51, 0.5)",
     fontFamily: "Lexend",
