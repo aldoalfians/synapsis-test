@@ -7,6 +7,7 @@ interface UsePostMutatorProps {
   onSuccessAddPost?: () => void;
   onSuccessEditPost?: () => void;
   onSuccessDeletePost?: () => void;
+  onError?: (e: any) => void;
 }
 
 function usePostMutator({
@@ -14,6 +15,7 @@ function usePostMutator({
   onSuccessAddPost,
   onSuccessEditPost,
   onSuccessDeletePost,
+  onError,
 }: UsePostMutatorProps) {
   const {
     data: listData,
@@ -32,6 +34,10 @@ function usePostMutator({
       onSuccessAddPost?.();
       refetchListData();
     },
+    onError(e) {
+      console.log(e);
+      onError?.(e);
+    },
   });
 
   const { submit: submitEditPost, isLoading: isLoadingEditPost } = useMutationSubmit({
@@ -41,6 +47,9 @@ function usePostMutator({
       onSuccessEditPost?.();
       refetchListData();
     },
+    onError(e) {
+      onError?.(e);
+    },
   });
 
   const { submit: submitDeletePost, isLoading: isLoadingDeletePost } = useMutationSubmit({
@@ -49,6 +58,9 @@ function usePostMutator({
     onSuccess() {
       onSuccessDeletePost?.();
       refetchListData();
+    },
+    onError(e) {
+      onError?.(e);
     },
   });
 

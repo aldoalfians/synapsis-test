@@ -1,8 +1,10 @@
+import AuthroziationModal from '@/components/AuthroziationModal';
 import PageLayout from '@/components/layout/page-layout';
 import Container from '@/components/layout/page-layout/Container';
 import usePostMutator from '@/utilities/hooks/posts/usePostMutator';
 import { Button, Col, Form, Input, notification, Row, Space, Typography } from 'antd';
 import { useRouter } from 'next/router';
+import { useState } from 'react';
 
 const { Title, Text } = Typography;
 
@@ -14,6 +16,14 @@ interface Values {
 function Add() {
   const [form] = Form.useForm();
   const router = useRouter();
+
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  const onError = (e: any) => {
+    if (e.response.status === 401) {
+      setIsOpen(true);
+    }
+  };
 
   const onSuccessAddPost = () => {
     router.back();
@@ -27,6 +37,7 @@ function Add() {
 
   const { submitPost, isLoadingSubmitPost } = usePostMutator({
     onSuccessAddPost,
+    onError,
   });
 
   const onFinish = (values: Values) => {
@@ -66,6 +77,8 @@ function Add() {
           </Col>
         </Row>
       </Container>
+
+      <AuthroziationModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
     </PageLayout>
   );
 }
