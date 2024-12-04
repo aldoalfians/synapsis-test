@@ -61,3 +61,17 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - `npm run dev` - Start development server
 - `npm run build` - Build for production
 - `npm start` - Start production server
+
+
+
+## Form Input Fields
+This form has two input fields:
+
+![image](https://github.com/user-attachments/assets/50c289f6-dd15-440d-a49a-c85966288fbd)
+
+Nama (Name): For the user to enter their name.
+
+Token: For the user to enter a token obtained from the <a href="https://gorest.co.in/" target="__blank">gorest.co.in<a> site.
+
+Users should enter their name and the token from gorest.co.in, then click the "Masuk" button to submit the form.
+
