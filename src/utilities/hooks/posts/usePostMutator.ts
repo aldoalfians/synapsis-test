@@ -2,8 +2,8 @@ import useMutationSubmit from "@/utilities/hooks/useMutationSubmit";
 import useDataPagination from "../useDataPagination";
 
 interface UsePostMutatorProps {
-  id?: number;
-  user_id?: number;
+  id?: number | string;
+  user_id?: number | string;
   onSuccessAddPost?: () => void;
   onSuccessEditPost?: () => void;
   onSuccessDeletePost?: () => void;
@@ -11,7 +11,6 @@ interface UsePostMutatorProps {
 
 function usePostMutator({
   id,
-  user_id,
   onSuccessAddPost,
   onSuccessEditPost,
   onSuccessDeletePost,
@@ -30,7 +29,6 @@ function usePostMutator({
     useMutationSubmit({
       url: `/posts`,
       method: "POST",
-      data: { user_id },
       onSuccess() {
         onSuccessAddPost?.();
         refetchListData();

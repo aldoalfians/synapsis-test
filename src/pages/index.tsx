@@ -14,11 +14,19 @@ import BaseCard from "@/components/BaseCard";
 import usePostMutator from "@/utilities/hooks/posts/usePostMutator";
 import { PlusOutlined } from "@ant-design/icons";
 import { useRouter } from "next/router";
+import { useGetLoggedUser } from "@/utilities/authorization";
+import { useEffect, useState } from "react";
+import DetailPostModal from "@/components/DetailPostModal";
 
 const { Title, Text } = Typography;
 
 export default function Home() {
   const router = useRouter();
+  const userData = useGetLoggedUser();
+
+  const [isOpen, setIsOpen] = useState<boolean>();
+  const [slug, setSlug] = useState<string>("");
+
   const { listData, isLoadingListData, pagination, goToPage } = usePostMutator(
     {}
   );
@@ -54,11 +62,15 @@ export default function Home() {
             <>
               <Row gutter={[16, 16]} style={{ marginTop: 24 }}>
                 {listData?.map((item) => (
-                  <Col span={24} md={12} lg={8}>
+                  <Col span={24} md={12} lg={8} xl={6}>
                     <BaseCard
                       body={item?.body}
                       title={item?.title}
                       postId={item?.id}
+                      onClick={() => {
+                        setIsOpen(true);
+                        setSlug(item?.id);
+                      }}
                     />
                   </Col>
                 ))}
@@ -88,6 +100,15 @@ export default function Home() {
             <Empty />
           )}
         </Spin>
+
+        <DetailPostModal
+          isOpen={isOpen}
+          slug={slug}
+          onClose={() => {
+            setIsOpen(false);
+            setSlug("");
+          }}
+        />
       </Container>
     </PageLayout>
   );
