@@ -1,5 +1,6 @@
-import { Image } from "antd";
 import Link from "next/link";
+import Logo from "../../../../public/images/logo.png";
+import Image from "next/image";
 
 interface Props {
   path?: string;
@@ -8,7 +9,7 @@ interface Props {
 export default function BrandLogo({ path = "/" }: Props) {
   return (
     <Link href={path}>
-      <Image alt="logo" src={"s"} width="100" />
+      <Image alt="logo" src={Logo} width="100" />
     </Link>
   );
 }

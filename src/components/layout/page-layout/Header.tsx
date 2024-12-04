@@ -4,6 +4,7 @@ import Container from "./Container";
 import { Layout } from "antd";
 
 const HeaderStyled = styled(Layout.Header)`
+  padding: 0 !important;
   background-color: var(--ant-color-white) !important;
   height: fit-content;
   box-shadow: var(--ant-box-shadow) !important;
