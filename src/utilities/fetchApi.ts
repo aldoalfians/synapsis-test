@@ -1,5 +1,6 @@
 import { AxiosRequestConfig, AxiosResponse } from "axios";
 import api from "./api";
+import { getAuthHeader } from "./authorization";
 
 interface FetchRequest {
   url: string;
@@ -47,6 +48,7 @@ async function fetchApi({
 
     const finalHeaders = {
       ...headers,
+      ...getAuthHeader(),
     };
 
     const finalPayload = payload;
