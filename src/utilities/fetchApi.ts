@@ -1,13 +1,13 @@
-import { AxiosRequestConfig, AxiosResponse } from "axios";
-import api from "./api";
-import { getAuthHeader } from "./authorization";
+import { AxiosRequestConfig, AxiosResponse } from 'axios';
+import api from './api';
+import { getAuthHeader } from './authorization';
 
 interface FetchRequest {
   url: string;
   params: Record<string, any>;
   payload: Record<string, any>;
   headers: Record<string, string>;
-  method: "POST" | "GET" | "PUT" | "DELETE";
+  method: 'POST' | 'GET' | 'PUT' | 'DELETE';
   isUseAuth: boolean;
 }
 
@@ -33,7 +33,7 @@ async function fetchApi({
   ...rest
 }: Partial<FetchOption> = {}): Promise<any> {
   if (!url || !method) {
-    throw new Error("URL and method are required");
+    throw new Error('URL and method are required');
   }
 
   return new Promise((resolve, reject) => {
@@ -68,7 +68,7 @@ async function fetchApi({
     axiosFetch
       .then((response) => {
         const { data } = response;
-        if (typeof data?.success === "boolean" && data?.success === false) {
+        if (typeof data?.success === 'boolean' && data?.success === false) {
           throw new Error(data?.message);
         }
 
@@ -83,11 +83,11 @@ async function fetchApi({
         const errResult = onError?.(e, request);
 
         const errorMessage =
-          (typeof errResult === "string" ? errResult : null) ||
-          (typeof e?.response?.error === "string" ? e.response.error : null) ||
+          (typeof errResult === 'string' ? errResult : null) ||
+          (typeof e?.response?.error === 'string' ? e.response.error : null) ||
           e?.response?.data?.message ||
           e?.message ||
-          "Terjadi kesalahan, silahkan coba beberapa saat lagi";
+          'Terjadi kesalahan, silahkan coba beberapa saat lagi';
 
         reject(errorMessage);
       });

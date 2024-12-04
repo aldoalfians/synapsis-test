@@ -1,6 +1,6 @@
-import { useCallback } from "react";
-import { AxiosRequestConfig } from "axios";
-import fetchApi, { FetchOption } from "../fetchApi";
+import { useCallback } from 'react';
+import { AxiosRequestConfig } from 'axios';
+import fetchApi, { FetchOption } from '../fetchApi';
 
 const useFetchApi = (param: Partial<FetchOption>) => {
   return useCallback(

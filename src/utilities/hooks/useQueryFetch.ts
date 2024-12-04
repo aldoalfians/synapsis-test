@@ -1,8 +1,8 @@
-import { useMemo } from "react";
-import { useQuery } from "@tanstack/react-query";
-import { FetchOption } from "../fetchApi";
-import useFetchApi from "./useFetchApi";
-import useToastError from "./useToastError";
+import { useMemo } from 'react';
+import { useQuery } from '@tanstack/react-query';
+import { FetchOption } from '../fetchApi';
+import useFetchApi from './useFetchApi';
+import useToastError from './useToastError';
 
 interface QueryFetchBaseArgs {
   enabled?: boolean | null;
@@ -25,7 +25,7 @@ function useQueryFetch<T = any>({
   payload = {},
   params = {},
   headers = {},
-  method = "GET",
+  method = 'GET',
   retry = false,
   onSuccess,
   enabled = null,

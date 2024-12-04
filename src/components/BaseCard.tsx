@@ -1,18 +1,8 @@
-import {
-  Button,
-  Card,
-  Col,
-  Divider,
-  Dropdown,
-  MenuProps,
-  Row,
-  Space,
-  Typography,
-} from "antd";
-import { EllipsisOutlined } from "@ant-design/icons";
-import { useCallback, useState } from "react";
-import { useRouter } from "next/router";
-import usePostMutator from "@/utilities/hooks/posts/usePostMutator";
+import { Button, Card, Col, Divider, Dropdown, MenuProps, Row, Space, Typography } from 'antd';
+import { EllipsisOutlined } from '@ant-design/icons';
+import { useCallback } from 'react';
+import { useRouter } from 'next/router';
+import usePostMutator from '@/utilities/hooks/posts/usePostMutator';
 
 const { Title, Paragraph } = Typography;
 
@@ -29,22 +19,22 @@ function BaseCard({ title, body, postId, onClick }: Props) {
     id: postId,
   });
 
-  const items: MenuProps["items"] = [
+  const items: MenuProps['items'] = [
     {
-      key: "1",
-      label: "Hapus Post",
+      key: '1',
+      label: 'Hapus Post',
     },
     {
-      key: "2",
-      label: "Edit Post",
+      key: '2',
+      label: 'Edit Post',
     },
   ];
 
-  const handleMenuClick: MenuProps["onClick"] = useCallback(
+  const handleMenuClick: MenuProps['onClick'] = useCallback(
     ({ key }: { key: string }) => {
-      if (key === "1") {
+      if (key === '1') {
         submitDeletePost && submitDeletePost({});
-      } else if (key === "2") {
+      } else if (key === '2') {
         router.push(`/edit/${postId}`);
       }
     },
@@ -80,12 +70,12 @@ function BaseCard({ title, body, postId, onClick }: Props) {
         </Col>
       </Row>
 
-      <Divider orientation="center" style={{ margin: "12px 0" }} />
+      <Divider orientation="center" style={{ margin: '12px 0' }} />
 
       <Title level={2} ellipsis>
-        {title || "-"}
+        {title || '-'}
       </Title>
-      <Paragraph ellipsis={{ rows: 2 }}>{body || "-"}</Paragraph>
+      <Paragraph ellipsis={{ rows: 2 }}>{body || '-'}</Paragraph>
 
       <Button
         style={{ fontSize: 12 }}

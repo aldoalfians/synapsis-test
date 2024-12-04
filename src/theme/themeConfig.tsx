@@ -1,10 +1,10 @@
 const themeConfig = {
   token: {
     fontSize: 14,
-    colorPrimary: "#49bbe8",
-    colorText: "rgba(96, 96, 96, 1)",
-    colorTextSecondary: "rgba(51, 51, 51, 0.5)",
-    fontFamily: "Lexend",
+    colorPrimary: '#49bbe8',
+    colorText: 'rgba(96, 96, 96, 1)',
+    colorTextSecondary: 'rgba(51, 51, 51, 0.5)',
+    fontFamily: 'Lexend',
     borderRadius: 8,
   },
   components: {
@@ -14,7 +14,7 @@ const themeConfig = {
   },
 
   cssVar: {
-    key: "synps",
+    key: 'synps',
   },
   hashed: false,
 };

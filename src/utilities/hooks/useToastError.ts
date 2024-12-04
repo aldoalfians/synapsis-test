@@ -1,14 +1,14 @@
-import { useEffect } from "react";
-import { notification } from "antd";
+import { useEffect } from 'react';
+import { notification } from 'antd';
 
 const useToastError = (errMessage: string | any | null = null) => {
   useEffect(() => {
     if (errMessage) {
       notification.open({
-        type: "error",
-        message: "Error",
+        type: 'error',
+        message: 'Error',
         description: errMessage,
-        placement: "top",
+        placement: 'top',
       });
     }
   }, [errMessage]);

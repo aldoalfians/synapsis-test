@@ -1,19 +1,9 @@
-import PageLayout from "@/components/layout/page-layout";
-import Container from "@/components/layout/page-layout/Container";
-import usePostMutator from "@/utilities/hooks/posts/usePostMutator";
-import useQueryFetch from "@/utilities/hooks/useQueryFetch";
-import {
-  Button,
-  Col,
-  Form,
-  Input,
-  notification,
-  Row,
-  Space,
-  Spin,
-  Typography,
-} from "antd";
-import { useRouter } from "next/router";
+import PageLayout from '@/components/layout/page-layout';
+import Container from '@/components/layout/page-layout/Container';
+import usePostMutator from '@/utilities/hooks/posts/usePostMutator';
+import useQueryFetch from '@/utilities/hooks/useQueryFetch';
+import { Button, Col, Form, Input, notification, Row, Space, Spin, Typography } from 'antd';
+import { useRouter } from 'next/router';
 
 const { Title, Text } = Typography;
 
@@ -39,10 +29,10 @@ function Edit({ params }: EditPageProps) {
   const onSuccessEditPost = () => {
     router.back();
     notification.open({
-      type: "success",
-      message: "Berahsil",
-      description: "Data berhasil diupdate",
-      placement: "top",
+      type: 'success',
+      message: 'Berahsil',
+      description: 'Data berhasil diupdate',
+      placement: 'top',
     });
     refetch();
   };
@@ -56,21 +46,18 @@ function Edit({ params }: EditPageProps) {
     submitEditPost &&
       submitEditPost({
         ...values,
-        user_id: "7563750",
+        user_id: '7563750',
       });
   };
 
   return (
     <PageLayout>
-      <Container style={{ padding: "48px 16px" }}>
+      <Container style={{ padding: '48px 16px' }}>
         <Space direction="vertical">
-          <Title style={{ margin: "auto" }} level={2}>
+          <Title style={{ margin: 'auto' }} level={2}>
             Edit Data
           </Title>
-          <Text>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry.
-          </Text>
+          <Text>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</Text>
         </Space>
 
         <Row justify="start" style={{ marginTop: 16 }}>
@@ -93,12 +80,7 @@ function Edit({ params }: EditPageProps) {
                 </Form.Item>
 
                 <Form.Item>
-                  <Button
-                    loading={isLoadingEditPost}
-                    type="primary"
-                    htmlType="submit"
-                    size="large"
-                  >
+                  <Button loading={isLoadingEditPost} type="primary" htmlType="submit" size="large">
                     Submit
                   </Button>
                 </Form.Item>
@@ -111,9 +93,7 @@ function Edit({ params }: EditPageProps) {
   );
 }
 
-export async function getServerSideProps(context: {
-  params: EditPageProps["params"];
-}) {
+export async function getServerSideProps(context: { params: EditPageProps['params'] }) {
   return {
     props: {
       params: context.params || {},

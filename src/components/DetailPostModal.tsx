@@ -1,5 +1,5 @@
-import useQueryFetch from "@/utilities/hooks/useQueryFetch";
-import { Modal, Skeleton, Spin, Typography } from "antd";
+import { Modal, Spin, Typography } from 'antd';
+import useQueryFetch from '@/utilities/hooks/useQueryFetch';
 
 const { Title, Text } = Typography;
 
@@ -27,8 +27,8 @@ function DetailPostModal({ onClose, isOpen, slug }: Props) {
       destroyOnClose
     >
       <Spin spinning={isLoading}>
-        <Title level={4}>{data?.title || "-"}</Title>
-        <Text>{data?.body || "-"}</Text>
+        <Title level={4}>{data?.title || '-'}</Title>
+        <Text>{data?.body || '-'}</Text>
       </Spin>
     </Modal>
   );

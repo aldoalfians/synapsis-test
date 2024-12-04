@@ -1,10 +1,10 @@
-import { useMutation, UseMutationResult } from "@tanstack/react-query";
-import useFetchApi from "./useFetchApi";
-import useToastError from "./useToastError";
+import { useMutation, UseMutationResult } from '@tanstack/react-query';
+import useFetchApi from './useFetchApi';
+import useToastError from './useToastError';
 
 interface UseMutationSubmitParams {
   url: string;
-  method?: "GET" | "POST" | "PUT" | "DELETE";
+  method?: 'GET' | 'POST' | 'PUT' | 'DELETE';
   headers?: Record<string, string>;
   payload?: any;
   params?: Record<string, string>;
@@ -17,7 +17,7 @@ interface UseMutationSubmitParams {
 }
 
 interface UseMutationSubmitReturn {
-  submit?: UseMutationResult<any, Error, any, any>["mutate"];
+  submit?: UseMutationResult<any, Error, any, any>['mutate'];
   data?: any;
   isLoading?: boolean;
   isError?: boolean;
@@ -27,7 +27,7 @@ interface UseMutationSubmitReturn {
 
 const useMutationSubmit = ({
   url,
-  method = "POST",
+  method = 'POST',
   headers,
   payload,
   params,
@@ -69,7 +69,7 @@ const useMutationSubmit = ({
   return {
     submit,
     data,
-    isLoading: status === "pending",
+    isLoading: status === 'pending',
     isError,
     isSuccess,
     errMessage,

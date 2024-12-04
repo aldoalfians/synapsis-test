@@ -1,6 +1,6 @@
-import { useCallback, useMemo } from "react";
-import { useRouter } from "next/router";
-import useQueryFetch from "@/utilities/hooks/useQueryFetch";
+import { useCallback, useMemo } from 'react';
+import { useRouter } from 'next/router';
+import useQueryFetch from '@/utilities/hooks/useQueryFetch';
 
 interface PaginationInfo {
   total: number;
@@ -35,8 +35,8 @@ interface BaseResponse<T> {
 }
 
 const defaultGeneratedParams = {
-  search: "q",
-  tagged: "tagged_with",
+  search: 'q',
+  tagged: 'tagged_with',
 };
 
 function useDataPagination(
@@ -52,10 +52,7 @@ function useDataPagination(
   const paramsObj = useMemo(() => {
     const queryParams = { ...defaultParams, ...router.query };
     return Object.fromEntries(
-      Object.entries(queryParams).map(([key, value]) => [
-        key,
-        value?.toString(),
-      ])
+      Object.entries(queryParams).map(([key, value]) => [key, value?.toString()])
     );
   }, [router.query, defaultParams]);
 
@@ -75,14 +72,14 @@ function useDataPagination(
 
   const goToPage = useCallback(
     (page: number, per_page?: number) => {
-      if (typeof page !== "number") return;
+      if (typeof page !== 'number') return;
       const isPerPageChanged = per_page !== Number(paramsObj.per_page);
       router.push({
         pathname: router.pathname,
         query: {
           ...paramsObj,
           per_page: per_page?.toString(),
-          page: isPerPageChanged ? "1" : page.toString(),
+          page: isPerPageChanged ? '1' : page.toString(),
         },
       });
     },
@@ -102,7 +99,7 @@ function useDataPagination(
       }).reduce(
         (acc, [key, value]) => ({
           ...acc,
-          ...(value !== "" &&
+          ...(value !== '' &&
             value !== null &&
             value !== undefined && {
               [key]: value,
@@ -125,7 +122,7 @@ function useDataPagination(
                 ...validateNextParams({
                   [realParamName]: value,
                 }),
-                page: "1",
+                page: '1',
               },
             });
           },
@@ -146,22 +143,17 @@ function useDataPagination(
         pathname: router.pathname,
         query: {
           ...validateNextParams(nextParams),
-          page: "1",
+          page: '1',
         },
       });
     },
     nextPage: () => {
       const nextPage =
-        pagination && pagination.page < pagination.pages
-          ? pagination.page + 1
-          : pagination?.page;
+        pagination && pagination.page < pagination.pages ? pagination.page + 1 : pagination?.page;
       goToPage(nextPage || 1, pagination?.limit);
     },
     prevPage: () => {
-      const prevPage =
-        pagination && pagination.page > 1
-          ? pagination.page - 1
-          : pagination?.page;
+      const prevPage = pagination && pagination.page > 1 ? pagination.page - 1 : pagination?.page;
       goToPage(prevPage || 1, pagination?.limit);
     },
   };

@@ -1,57 +1,40 @@
-import {
-  Button,
-  Typography,
-  Space,
-  Spin,
-  Row,
-  Pagination,
-  Empty,
-  Col,
-} from "antd";
-import PageLayout from "@/components/layout/page-layout";
-import Container from "@/components/layout/page-layout/Container";
-import BaseCard from "@/components/BaseCard";
-import usePostMutator from "@/utilities/hooks/posts/usePostMutator";
-import { PlusOutlined } from "@ant-design/icons";
-import { useRouter } from "next/router";
-import { useGetLoggedUser } from "@/utilities/authorization";
-import { useEffect, useState } from "react";
-import DetailPostModal from "@/components/DetailPostModal";
+import { Button, Typography, Space, Spin, Row, Pagination, Empty, Col } from 'antd';
+import PageLayout from '@/components/layout/page-layout';
+import Container from '@/components/layout/page-layout/Container';
+import BaseCard from '@/components/BaseCard';
+import usePostMutator from '@/utilities/hooks/posts/usePostMutator';
+import { PlusOutlined } from '@ant-design/icons';
+import { useRouter } from 'next/router';
+
+import { useState } from 'react';
+import DetailPostModal from '@/components/DetailPostModal';
 
 const { Title, Text } = Typography;
 
 export default function Home() {
   const router = useRouter();
-  const userData = useGetLoggedUser();
 
   const [isOpen, setIsOpen] = useState<boolean>();
-  const [slug, setSlug] = useState<string>("");
+  const [slug, setSlug] = useState<string>('');
 
-  const { listData, isLoadingListData, pagination, goToPage } = usePostMutator(
-    {}
-  );
+  const { listData, isLoadingListData, pagination, goToPage } = usePostMutator({});
 
   return (
     <PageLayout>
-      <Container style={{ padding: "48px 16px" }}>
+      <Container style={{ padding: '48px 16px' }}>
         <Row justify="space-between" align="middle">
           <Col>
             <Space direction="vertical">
-              <Title style={{ margin: "auto" }} level={2}>
+              <Title style={{ margin: 'auto' }} level={2}>
                 Daftar Posts
               </Title>
               <Text>
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry.
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
               </Text>
             </Space>
           </Col>
           <Col>
-            <Button
-              type="primary"
-              icon={<PlusOutlined />}
-              onClick={() => router.push("add")}
-            >
+            <Button type="primary" icon={<PlusOutlined />} onClick={() => router.push('add')}>
               Tambah Data
             </Button>
           </Col>
@@ -88,7 +71,7 @@ export default function Home() {
                         current: pagination.page,
                         onChange: (page, pageSize) => {
                           goToPage(page, pageSize);
-                          window.scrollTo({ top: 0, behavior: "smooth" });
+                          window.scrollTo({ top: 0, behavior: 'smooth' });
                         },
                       })}
                     />
@@ -106,7 +89,7 @@ export default function Home() {
           slug={slug}
           onClose={() => {
             setIsOpen(false);
-            setSlug("");
+            setSlug('');
           }}
         />
       </Container>
